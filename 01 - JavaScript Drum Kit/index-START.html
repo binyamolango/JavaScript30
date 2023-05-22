@@ -10,66 +10,75 @@
 
 
   <div class="keys">
-    <div data-key="65" class="key">
+    <div aria-keyshortcuts="a"  class="key">
       <kbd>A</kbd>
       <span class="sound">KICK</span>
     </div>
-    <div data-key="83" class="key">
+    <div aria-keyshortcuts="s"  class="key">
       <kbd>S</kbd>
       <span class="sound">SNARE</span>
     </div>
-    <div data-key="68" class="key">
+    <div  aria-keyshortcuts="d" class="key">
       <kbd>D</kbd>
       <span class="sound">CLAP</span>
     </div>
-    <div data-key="70" class="key">
+    <div aria-keyshortcuts="f"  class="key">
       <kbd>F</kbd>
       <span class="sound">TOM</span>
     </div>
-    <div data-key="71" class="key">
+    <div aria-keyshortcuts="g"  class="key">
       <kbd>G</kbd>
       <span class="sound">HI-HAT</span>
     </div>
-    <div data-key="72" class="key">
+    <div  aria-keyshortcuts="h" class="key">
       <kbd>H</kbd>
       <span class="sound">OPEN-HAT</span>
     </div>
-    <div data-key="74" class="key">
+    <div  aria-keyshortcuts="j" class="key">
       <kbd>J</kbd>
       <span class="sound">RIDE</span>
     </div>
-    <div data-key="75" class="key">
+    <div aria-keyshortcuts="k"  class="key">
       <kbd>K</kbd>
       <span class="sound">BOOM</span>
     </div>
-    <div data-key="76" class="key">
+    <div aria-keyshortcuts="l"  class="key">
       <kbd>L</kbd>
       <span class="sound">TINK</span>
     </div>
   </div>
 
 
-  <audio data-key="65" src="sounds\kick.wav"></audio>
-  <audio data-key="83" src="sounds\snare.wav"></audio>
-  <audio data-key="68" src="sounds\clap.wav"></audio>
-  <audio data-key="70" src="sounds\tom.wav"></audio>
-  <audio data-key="71" src="sounds\hihat.wav"></audio>
-  <audio data-key="72" src="sounds\openhat.wav"></audio>
-  <audio data-key="74" src="sounds\ride.wav"></audio>
-  <audio data-key="75" src="sounds\boom.wav"></audio>
-  <audio data-key="76" src="sounds\tink.wav"></audio>
+  <audio  aria-keyshortcuts="a" src="sounds\kick.wav"></audio>
+  <audio  aria-keyshortcuts="s" src="sounds\snare.wav"></audio>
+  <audio  aria-keyshortcuts="d" src="sounds\clap.wav"></audio>
+  <audio  aria-keyshortcuts="f" src="sounds\tom.wav"></audio>
+  <audio  aria-keyshortcuts="g" src="sounds\hihat.wav"></audio>
+  <audio  aria-keyshortcuts="h" src="sounds\openhat.wav"></audio>
+  <audio  aria-keyshortcuts="j" src="sounds\ride.wav"></audio>
+  <audio  aria-keyshortcuts="k" src="sounds\boom.wav"></audio>
+  <audio  aria-keyshortcuts="l" src="sounds\tink.wav"></audio>
 
 
 <script>
   
   function playSound(e) {
-    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
-    if(!audio) return; // stop the function from running
-    audio.currentTime = 0; // rewind to the start
+    const audio = document.querySelector(`audio[aria-keyshortcuts="${e.key}"]`);
+    const key = document.querySelector(`.key[aria-keyshortcuts="${e.key}"]`);
+    if(!audio) return;
+    audio.currentTime = 0;
     audio.play();
     key.classList.add("playing");
   }
+
+  // function playSound(e) {
+  //   const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+  //   const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+  //   if(!audio) return; // stop the function from running
+  //   audio.currentTime = 0; // rewind to the start
+  //   audio.play();
+  //   key.classList.add("playing");
+  // }
 
   function removeTransition(e){
     if(e.propertyName !== "transform") return; // skip if it name is not transform
